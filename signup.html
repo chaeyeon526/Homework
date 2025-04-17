@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <script src="./js/newregist.js"></script>
+  </head>
+  <style>
+    body {
+      background-color: #8fa2a7;
+      padding: 30px;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      place-items: left;
+      gap: 10px;
+    }
+
+    p {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+      padding: 10px;
+      width: 100px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: auto;
+      margin-right: 5px;
+    }
+
+    .form-group.inline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    input[type="color"] {
+      width: 50px;
+      height: 40px;
+      padding: 0;
+      border: none;
+    }
+
+    fieldset {
+      border: 1px solid#Ccc;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    legend {
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #fece50;
+      color: white;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #5ffe50;
+    }
+
+    .fixed-button {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      background-color: gray;
+      color: white;
+      padding: 10px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .footer-text {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 20px;
+      color: #777;
+    }
+    .form-group.inline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  </style>
+  <body>
+    <main>
+      <h2>회원 가입</h2>
+      <form
+        action="./regist"
+        name="regform"
+        id="regform"
+        method="post"
+        onsubmit="return sendit()"
+      >
+        <div class="form-group">
+          <p>
+            이메일:
+            <input
+              type="text"
+              name="useremail"
+              id="useremail"
+              maxlength="100"
+            />
+          </p>
+        </div>
+
+        <div class="form-group">
+          <p>
+            비밀번호:
+            <input type="password" name="userpw" id="userpw" maxlength="20" />
+          </p>
+        </div>
+        <div class="form-group">
+          <p>
+            비밀번호 확인:
+            <input
+              type="password"
+              name="userpw_re"
+              id="userpw_re"
+              maxlength="20"
+            />
+          </p>
+        </div>
+
+        <div class="form-group">
+          <p>
+            이름:
+            <input type="text" name="name" id="name" maxlength="10" />
+          </p>
+        </div>
+        <div class="form-group">
+          <p>
+            생년월일:
+
+            <input type="date" id="birth" name="birth" />
+          </p>
+        </div>
+
+        <div class="form-group">
+          <p>
+            성별:
+            <label for="male">남자</label
+            ><input type="radio" name="gender" value="남자" id="male" checked />
+            <label for="female">여자</label
+            ><input type="radio" name="gender" value="여자" id="female" />
+          </p>
+
+          <p>
+            주민등록번호:
+            <input
+              type="text"
+              name="ssn1"
+              id="ssn1"
+              maxlength="6"
+              class="ssn"
+            />
+            -
+            <input
+              type="text"
+              name="ssn2"
+              id="ssn2"
+              maxlength="7"
+              class="ssn"
+            />
+            <button>주민등록번호 검증</button>
+          </p>
+        </div>
+        <fieldset>
+          <legend>관심 분야</legend>
+          <label for="music">음악</label>
+          <input type="checkbox" id="music" name="interest" value="music" />
+          <label for="movie">영화</label>
+          <input type="checkbox" id="movie" name="interest" value="movie" />
+          <label for="book">책</label>
+          <input type="checkbox" id="book" name="interest" value="book" />
+          <label for="workout">운동</label>
+          <input type="checkbox" id="wokrout" name="interest" value="workout" />
+          <label for="travel">여행</label>
+          <input type="checkbox" id="travel" name="interest" value="travel" />
+        </fieldset>
+
+        <div class="form-group">
+          <label for="intro">자기소개</label>
+          <textarea
+            name="intro"
+            id="intro"
+            placeholder="간단한 자기소개를 작성해주세요."
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <p>
+            휴대폰번호:
+
+            <input
+              type="tel"
+              id="hp"
+              name="hp"
+              maxlength="30"
+              placeholder="휴대폰 번호"
+            />
+          </p>
+        </div>
+        <p><button>가입완료</button></p>
+        <a href="#" class="fixed-button">도움말</a>
+      </form>
+    </main>
+  </body>
+</html>
